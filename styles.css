@@ -1,0 +1,247 @@
+body {
+    font-family: 'Comic Sans MS', sans-serif;
+    text-align: center;
+    background-color: white;
+}
+
+h1 {
+    color: #ff6347;
+    opacity: 0;
+    animation: fadeIn 1s forwards, shake 0.5s 1s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px);
+    }
+
+    25% {
+        transform: translate(-1px, -2px);
+    }
+
+    50% {
+        transform: translate(-3px, 0px);
+    }
+
+    75% {
+        transform: translate(3px, 2px);
+    }
+
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.button {
+    background-color: #ff6347;
+    color: white;
+    padding: 15px 30px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 12px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+    background-color: #ff4500;
+    transform: translateY(-3px) rotate(3deg);
+}
+
+.bounce {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.card-row {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.card {
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 2px;
+    background-size: cover;
+    transition: transform 0.3s, opacity 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ff6347;
+    opacity: 0;
+    animation: fadeInCard 0.5s forwards;
+}
+
+@keyframes fadeInCard {
+    to {
+        opacity: 1;
+    }
+}
+
+.card:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.letter {
+    font-size: 3em;
+    color: #ff6347;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    animation: letterBounce 0.5s infinite;
+}
+
+@keyframes letterBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    width: 400px;
+    transform: translateY(-30px);
+    opacity: 0;
+    animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+    animation: zoomIn 0.5s forwards;
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.input-section {
+    margin-bottom: 15px;
+}
+
+#guessInput {
+    padding: 10px;
+    width: 80%;
+    font-size: 1.2em;
+    margin-top: 10px;
+    animation: fadeInInput 0.5s forwards;
+}
+
+@keyframes fadeInInput {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.check-button {
+    background-color: #ff6347;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 12px;
+    cursor: pointer;
+    border: none;
+}
+
+#superheroeImagen {
+    display: block;
+    margin: 0 auto;
+    height: 300px;
+    width: auto;
+    animation: zoomIn 0.5s forwards;
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Este estilo puede reutilizarse para el nuevo modal */
+.result-modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    width: 400px;
+}

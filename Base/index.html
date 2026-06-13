@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesús elige a los doce apóstoles</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+
+<body>
+    <h1>Jesús elige a los doce apóstoles</h1>
+    <img src="/Imagenes/jesus 1.jpg" alt="Imagen Superhéroe" id="superheroeImagen">
+    <div id="addChildSection" class="container">
+        <button class="button" onclick="startGame()">Iniciar Juego</button>
+    </div>
+
+    <div id="gameSection" class="container" style="display: none;">
+        <div id="cardsContainer" class="cards-container"></div>
+    </div>
+
+    <!-- Modal para verificar la respuesta -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Objeto" class="modal-img">
+            <div class="input-section">
+                <label for="guessInput">¿Qué nombre tiene esto?</label>
+                <input type="text" id="guessInput" placeholder="Escribe aquí...">
+            </div>
+            <button class="check-button" onclick="checkAnswer()">Revisar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
