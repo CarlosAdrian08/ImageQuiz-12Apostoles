@@ -4,42 +4,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Juego interactivo para niños: Jesús elige a los doce apóstoles">
+    <meta name="theme-color" content="#6C63FF">
     <title>Jesús elige a los doce apóstoles</title>
+    <link rel="icon" href="Imagenes/icon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>Jesús elige a los doce apóstoles</h1>
-    <img src="Imagenes/jesus 1.jpg" alt="Imagen Superhéroe" id="superheroeImagen">
-    <div id="addChildSection" class="container">
-        <button class="button" onclick="startGame()">Iniciar Juego</button>
+    <div class="bg-shapes" aria-hidden="true">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
     </div>
 
-    <div id="gameSection" class="container" style="display: none;">
-        <div id="cardsContainer" class="cards-container"></div>
-    </div>
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
 
-    <!-- Modal para verificar la respuesta -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <img id="modalImage" src="" alt="Objeto" class="modal-img">
-            <div class="input-section">
-                <label for="guessInput">¿Qué nombre tiene esto?</label>
-                <input type="text" id="guessInput" placeholder="Escribe aquí...">
+    <header class="header">
+        <h1 class="title">
+            <span class="title-icon" aria-hidden="true">&#x2728;</span>
+            Jesús elige a los doce apóstoles
+            <span class="title-icon" aria-hidden="true">&#x2728;</span>
+        </h1>
+    </header>
+
+    <main>
+        <section id="introSection" class="intro-section">
+            <div class="hero-card">
+                <img src="Imagenes/jesus 1.jpg" alt="Imagen de Jesús" class="hero-image" id="superheroeImagen">
+                <p class="hero-text">¡Hola! Ayuda a Jesús a elegir a sus apóstoles. Haz clic en las imágenes y escribe sus nombres.</p>
             </div>
-            <button class="check-button" onclick="checkAnswer()">Revisar</button>
-        </div>
-    </div>
+            <div class="score-board" id="scoreBoard" style="display: none;">
+                <div class="score-item">
+                    <span class="score-label">Puntos</span>
+                    <span class="score-value" id="scoreValue">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">Acertadas</span>
+                    <span class="score-value" id="correctCount">0</span>
+                </div>
+            </div>
+            <button class="btn btn-start" id="startBtn" onclick="startGame()" aria-label="Iniciar juego">
+                Iniciar Juego
+            </button>
+        </section>
 
-    <!-- Modal para mostrar el resultado de la respuesta -->
-    <div id="resultModal" class="modal">
+        <section id="gameSection" class="game-section" style="display: none;">
+            <div class="game-header">
+                <button class="btn btn-back" id="backBtn" onclick="goHome()" aria-label="Volver al inicio">
+                    <span aria-hidden="true">&#x2190;</span> Inicio
+                </button>
+                <div class="score-inline">
+                    <span class="score-label-sm">Puntos:</span>
+                    <span class="score-value-sm" id="scoreValueGame">0</span>
+                </div>
+            </div>
+            <div id="cardsContainer" class="cards-container"></div>
+        </section>
+    </main>
+
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
         <div class="modal-content">
-            <p id="resultMessage"></p>
-            <button class="check-button" id="retryButton" onclick="retry()">Intentar de nuevo</button>
+            <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+            <h2 id="modalTitle" class="modal-title">¿Qué nombre tiene esto?</h2>
+            <div class="modal-image-wrapper">
+                <img id="modalImage" src="" alt="Objeto" class="modal-img">
+            </div>
+            <div class="input-section">
+                <label for="guessInput" class="input-label">Escribe el nombre:</label>
+                <input type="text" id="guessInput" class="guess-input" placeholder="Escribe aquí..."
+                    autocomplete="off" maxlength="50" aria-describedby="inputHint">
+                <span id="inputHint" class="input-hint">Presiona Enter o toca el botón</span>
+            </div>
+            <button class="btn btn-check" id="checkBtn" onclick="checkAnswer()">
+                Revisar
+            </button>
         </div>
     </div>
 
-    <script src="script1.js"></script>
+    <div id="resultModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+        <div class="modal-backdrop" onclick="closeResult()"></div>
+        <div class="modal-content modal-result">
+            <div id="resultEmoji" class="result-emoji" aria-hidden="true"></div>
+            <h2 id="resultTitle" class="result-title"></h2>
+            <p id="resultMessage" class="result-message"></p>
+            <div class="result-buttons">
+                <button class="btn btn-retry" onclick="retry()">
+                    Seguir
+                </button>
+                <button class="btn btn-home" onclick="goHome(); closeResult();">
+                    Inicio
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; Desarrollado por Carlos Adrian Noh Caamal</p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 
 </html>
